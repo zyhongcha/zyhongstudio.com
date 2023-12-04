@@ -1,0 +1,27 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Footer from "@components/Footer.astro";
+import Head from "../components/Head.astro";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+  ogImage?: URL;
+};
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<html lang="en">
+  <Head ogImage={ogImage} title={title} description={description} />
+  <body>
+    <div class="bg-cream h-screen flex flex-col">
+      <Navigation />
+      <div class="flex-1">
+        <slot />
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import portrait from "@assets/portrait.jpg";
+import randomizedColor from "@lib/randomizedColor";
+
+type Props = {
+  color?: string;
+};
+
+if (Astro.props.color === undefined) {
+  Astro.props.color = randomizedColor();
+}
+const { color } = Astro.props;
+---
+
+<div
+  class="grid tablet:grid-cols-12 justify-center items-center gap-2 tablet:gap-12"
+>
+  <div
+    class="text-center tablet:text-left tablet:col-span-8 order-last tablet:order-first"
+  >
+    <h2>
+      Hello, I'm Zyhong Liu<span class={`text-ocher`}>.</span>
+    </h2>
+    <p class="prose-lg tablet:prose-xl">
+      Independent Freelance Fullstack Web Developer. I build web apps and drink
+      tea on the side. I am based in Duesseldorf, Germany.
+    </p>
+  </div>
+  <div class="tablet:col-span-4 order-first tablet:order-last">
+    <Image
+      class:list={[
+        `border-${color} rounded-full`,
+        "m-auto",
+        "w-full h-full max-w-[300px] max-h-[300px] tablet:max-w-full tablet:max-h-full",
+        "border-t-[2px] border-r-[10px] border-b-[12px] border-l-[2px]",
+      ]}
+      src={portrait}
+      alt="Portrait of me"
+    />
+  </div>
+</div>

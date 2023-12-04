@@ -1,0 +1,32 @@
+---
+import frontendStack from "@const/frontendStack";
+import cmsStack from "@const/cmsStack";
+import devOpsStack from "@const/devOpsStack";
+import backendStack from "@const/backendStack";
+import TechStack from "./TechStack.astro";
+---
+
+<div class="col-span-full">
+  <h2 class="prose-headings-h2 font-heading">
+    Tools I use to build stuff with<span class={`text-ocher`}>.</span>
+  </h2>
+  <p class="prose prose-lg pt-spacing">
+    A lot of my work feature the latest frontend technologies. I am also an
+    enthusiastic <a
+      href="https://jamstack.wtf/"
+      target="_blank"
+      rel="noopener noreferrer">Jamstack</a
+    > specialist, prioritizing rich UX for both users and admins while also
+    providing optimal performance and SEO by alternating between <a
+      href="https://www.patterns.dev/react/server-side-rendering/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      server-side and client-side rendering</a
+    >, all written in clean and perfomant code.
+  </p>
+</div>
+<TechStack title="Frontend" stackList={frontendStack} />
+<TechStack title="Backend" stackList={backendStack} />
+<TechStack title="CMS" stackList={cmsStack} />
+<TechStack title="DevOps" stackList={devOpsStack} />

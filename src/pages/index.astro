@@ -1,16 +1,91 @@
 ---
+// import { getEntry } from "astro:content";
+import Stage from "@components/Stage.astro";
+import TechStacks from "@components/TechStacks.astro";
+import Action from "@components/Action.astro";
+import Layout from "@layouts/Default.astro";
+import randomizedColor from "@lib/randomizedColor";
 
+// const portvierEntry = await getEntry("works", "portvier");
+// const sakeAcademyEntry = await getEntry("works", "sake-academy");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home" description="Freelancer Web Developer">
+  <main>
+    <section id="intro" class="bg-cream">
+      <div
+        class="container min-h-[calc(100vh_-_124px)] flex items-center justify-center"
+      >
+        <Stage />
+      </div>
+    </section>
+    <section id="tech-stack" class={`bg-${randomizedColor(4)}`}>
+      <div
+        class="container text-center tablet:text-left grid grid-cols-1 tablet:grid-cols-12 gap-12"
+      >
+        <TechStacks />
+      </div>
+    </section>
+
+    <!-- <section id="work" class={`bg-${randomizedColor(4)}`}>
+      <div
+        class="container text-center tablet:text-left grid grid-cols-1 tablet:grid-cols-12 gap-12"
+      >
+        <div class="col-span-full">
+          <h2 class="prose-headings-h2 font-heading">
+            Works<span class={`text-${randomizedColor(4)}`}>.</span>
+          </h2>
+          <div class="flex flex-col gap-8 pt-spacing">
+            <Work workEntry={portvierEntry} />
+            <Work workEntry={sakeAcademyEntry} />
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section id="about">
+      <div class="container text-center tablet:text-left">
+        <h2 class="prose-headings-h2 font-heading">
+          Learn more about me<span class={`text-pink`}>.</span>
+        </h2>
+        <p class="prose prose-lg pt-spacing">
+          I am more than just a web dev. In my previous careers, I was a former
+          Asian food ambassador in a start-up and premium tea purveyor. I am
+          also an avid photography hobbyist and polyglot who loves to explore
+          new places around the world, bringing a unique blend of experiences
+          and creativity to my web dev projects.
+        </p>
+        <div
+          class="flex flex-wrap gap-8 pt-spacing justify-center tablet:justify-start"
+        >
+          <!-- <Action as="a" trailingArrow href="/about/">More about me</Action> -->
+          <!-- <Action as="a" trailingArrow href="/blog/">
+            Check out my tea blog
+          </Action> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class={`bg-${randomizedColor(4)}`}>
+      <div class="container text-center tablet:text-left">
+        <h2 class="prose-headings-h2 font-heading">
+          Let's Connect<span class={`text-ocher`}>.</span>
+        </h2>
+        <p class="prose prose-lg pt-spacing">
+          Need help for your next project? Whether you have something in mind,
+          want to discuss your ideas, or simply have a question, feel free to
+          reach out.
+        </p>
+
+        <div class="pt-spacing">
+          <Action
+            as="a"
+            tagStyleVariant="button"
+            href={"mailto:hello@zyhongstudio.com?subject=Enquiry&body=Hi Zyhong"}
+          >
+            Contact me
+          </Action>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

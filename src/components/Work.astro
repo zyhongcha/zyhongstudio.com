@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "./Card.astro";
+
+type Props = {
+  workEntry: CollectionEntry<"works">;
+};
+
+const { workEntry } = Astro.props;
+const { Content } = await workEntry.render();
+---
+
+<Card classList="flex flex-col gap-2">
+  <div class="">
+    <h3>
+      {workEntry.data.title}
+    </h3>
+    <h4>
+      {workEntry.data.subtitle}
+    </h4>
+    <p><Content /></p>
+  </div>
+  <div>Image</div>
+</Card>

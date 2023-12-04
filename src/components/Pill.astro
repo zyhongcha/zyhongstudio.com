@@ -1,0 +1,15 @@
+---
+type Props = {
+  classList?: string;
+};
+const { classList = "hover:text-white hover:bg-pink" } = Astro.props;
+---
+
+<span
+  class:list={[
+    classList,
+    "bg-white text-[0.87rem] rounded-full border-[2px] py-[0.25rem] px-[0.75rem] border-black drop-shadow-small hover:drop-shadow-medium",
+  ]}
+>
+  <slot />
+</span>

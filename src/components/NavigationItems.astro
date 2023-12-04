@@ -1,0 +1,50 @@
+---
+import linkedin from "/public/linkedin.svg";
+import github from "/public/github.svg";
+---
+
+<ul class="flex gap-8 items-center">
+  <!-- {
+      routes.map((item) => (
+        <li>
+          <a class="text-lg" href={item.url} title={`Go to ${item.name}`}>
+            {item.name}
+          </a>
+        </li>
+      ))
+    } -->
+  {
+    (
+      <>
+        <li>
+          <a
+            href={"https://github.com/zyhongcha"}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`See Github Profile`}
+          >
+            <img
+              src={github.src}
+              alt={`Github Profile`}
+              class:list={["w-[38px] h-[38px]"]}
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href={"https://www.linkedin.com/in/zyhong-liu-a58bb2196/"}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`See LinkedIn Profile`}
+          >
+            <img
+              src={linkedin.src}
+              alt={`LinkedIn Profile`}
+              class:list={["w-[38px] h-[38px]"]}
+            />
+          </a>
+        </li>
+      </>
+    )
+  }
+</ul>

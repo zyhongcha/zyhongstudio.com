@@ -1,0 +1,96 @@
+---
+// import routes from "@const/routes";
+import drawer from "/public/drawer.svg";
+import Action from "./Action.astro";
+import NavigationItems from "./NavigationItems.astro";
+---
+
+<header
+  class="min-h-[124px] bg-white border-b-4 border-black p-4 tablet:p-6 flex justify-between items-center"
+>
+  <a
+    href="/"
+    title="Back to Home"
+    class="flex gap-x-2 tablet:gap-x-4 items-center"
+  >
+    <img src="/rummo.png" width="64" height="64" class="rounded-full" />
+    <h1 class="hidden xs:inline-block font-bold text-[2rem] tablet:text-[3rem]">
+      ZyhongStudio
+    </h1>
+  </a>
+  <nav class="hidden tablet:block">
+    <ul class="flex gap-8 items-center">
+      <!-- {
+        routes.map((item) => (
+          <li>
+            <a class="text-lg" href={item.url} title={`Go to ${item.name}`}>
+              {item.name}
+            </a>
+          </li>
+        ))
+      } -->
+      <NavigationItems />
+    </ul>
+  </nav>
+
+  <!-- Mobile nav -->
+  <Action
+    tagStyleVariant={null}
+    classList={"tablet:hidden"}
+    as="button"
+    actionProps={{
+      id: "drawer-btn",
+      "aria-label": "Open menu",
+    }}
+  >
+    <img src={drawer.src} width="32" height="32" />
+  </Action>
+
+  <nav
+    id="mobile-drawer"
+    class="translate-x-full transition-transform ease-in-out duration-300 z-20 fixed w-[248px] top-0 right-0 h-full bg-cream p-4"
+  >
+    <div class="h-[124px] flex items-center mt-[-1rem] relative">
+      <Action
+        as="button"
+        classList="relative w-[32px] h-[32px] pl-0 pr-0 pt-0 pb-0 ml-auto "
+        actionProps={{
+          id: "drawer-close-btn",
+        }}
+      >
+        <div class="relative right-[-2px]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"
+            ><path
+              d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
+            ></path></svg
+          >
+        </div>
+      </Action>
+    </div>
+
+    <div class="flex flex-col text-right items-end">
+      <NavigationItems />
+    </div>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const drawerBtn = document.getElementById("drawer-btn");
+    const closeBtn = document.getElementById("drawer-close-btn");
+    const mobileDrawer = document.getElementById("mobile-drawer");
+
+    drawerBtn?.addEventListener("click", () => {
+      mobileDrawer?.classList.toggle("translate-x-full");
+    });
+
+    closeBtn?.addEventListener("click", () => {
+      mobileDrawer?.classList.toggle("translate-x-full");
+    });
+  });
+</script>

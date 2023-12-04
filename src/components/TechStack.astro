@@ -1,0 +1,34 @@
+---
+import Card from "./Card.astro";
+import Pill from "@components/Pill.astro";
+
+type Props = {
+  title: string;
+  stackList: {
+    name: string;
+    url: string;
+  }[];
+};
+
+const { title, stackList } = Astro.props;
+---
+
+<Card classList="tablet:col-span-6 flex flex-col gap-2">
+  <h3>{title}</h3>
+  <ul class="p-1 tablet:p-2.5 flex gap-x-2.5 gap-y-4 flex-wrap items-center">
+    {
+      stackList.map((item) => (
+        <li>
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Go to ${item.name}`}
+          >
+            <Pill>{item.name}</Pill>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Card>

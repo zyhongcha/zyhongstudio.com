@@ -1,7 +1,12 @@
 {
-  "name": "",
+  "name": "zyhongstudio.com",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "author": {
+    "name": "Zyhong Liu",
+    "email": "hello@zyhongstudio.com",
+    "url": "https://zyhongstudio.com/"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,7 +16,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
+    "@astrojs/netlify": "^3.0.4",
+    "@astrojs/tailwind": "^5.0.2",
     "astro": "^3.6.4",
+    "sharp": "^0.33.0",
+    "tailwindcss": "^3.0.24",
     "typescript": "^5.3.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10"
   }
 }

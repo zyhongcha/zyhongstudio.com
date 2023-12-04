@@ -1,0 +1,55 @@
+---
+// @ts-ignore import typescript bug
+import {
+  type HTMLAttributes,
+  type HTMLTag,
+  type Polymorphic,
+} from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  tagStyleVariant?: "button" | "a" | null;
+  target?: "_blank" | "_self";
+  href?: string;
+  classList?: string;
+  color?: string;
+  trailingArrow?: boolean;
+  actionProps?: HTMLAttributes<Tag>;
+}>;
+
+const {
+  as: Tag = "button",
+  target,
+  href,
+  color,
+  trailingArrow,
+  tagStyleVariant,
+  classList,
+  actionProps,
+} = Astro.props;
+
+let tagStyles;
+let attr: Record<string, any> = {
+  color,
+  href,
+  target,
+  trailingArrow,
+  ...actionProps,
+};
+
+if (Tag === "button") {
+  attr.type = "button";
+}
+
+if (Astro.props.tagStyleVariant !== null) {
+  tagStyles =
+    "py-2 px-4 border-2 border-black shadow-small hover:shadow-medium transition-all ease-in-out duration-150";
+} else if (tagStyleVariant === "a") {
+  tagStyles = "";
+}
+---
+
+<Tag {...attr} class:list={[tagStyles, classList, "inline-block"]}>
+  <slot />
+  {trailingArrow ? <span>&rarr;</span> : null}
+</Tag>
