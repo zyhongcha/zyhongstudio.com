@@ -28,14 +28,18 @@ const { color } = Astro.props;
     </p>
   </div>
   <div class="tablet:col-span-4 order-first tablet:order-last">
-    <Image
+    <img
       class:list={[
         `border-${color} rounded-full`,
         "m-auto",
         "w-full h-full max-w-[300px] max-h-[300px] tablet:max-w-full tablet:max-h-full",
         "border-t-[2px] border-r-[10px] border-b-[12px] border-l-[2px]",
       ]}
-      src={portrait}
+      src={portrait.src}
+      loading="lazy"
+      width="1236"
+      height="1236"
+      decoding="async"
       alt="Portrait of me"
     />
   </div>

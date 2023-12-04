@@ -10,6 +10,6 @@ export default defineConfig({
       ? "https://zyhongstudio.com/"
       : "https://localhost:4321/",
   integrations: [tailwind()],
-  output: "server",
+  output: 'server',
   adapter: netlify({}),
 });
