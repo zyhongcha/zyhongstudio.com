@@ -5,8 +5,11 @@ import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.ENV === "production" ? "https://zyhongstudio.com/" : "https://localhost:4321/",
+  site:
+    process.env.ENV === "production"
+      ? "https://zyhongstudio.com/"
+      : "https://localhost:4321/",
   integrations: [tailwind()],
   output: "server",
-  adapter: netlify()
+  adapter: netlify({}),
 });
