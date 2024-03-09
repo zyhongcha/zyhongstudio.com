@@ -4,4 +4,5 @@ export default [
   { name: "Git", url: "https://github.com/" },
   { name: "Netlify", url: "https://www.netlify.com/" },
   { name: "Vercel", url: "https://vercel.com/" },
+  { name: "CloudFlare", url: "https://www.cloudflare.com/" },
 ];
