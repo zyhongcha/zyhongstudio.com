@@ -11,5 +11,5 @@ export default defineConfig({
       : "https://localhost:4321/",
   integrations: [tailwind()],
   output: "server",
-  adapter: cloudflare(),
+  adapter: cloudflare({ mode: "directory" }),
 });
