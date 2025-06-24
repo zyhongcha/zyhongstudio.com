@@ -6,11 +6,11 @@ import NavigationItems from "./NavigationItems.astro";
 ---
 
 <header
-  class="min-h-[124px] bg-white border-b-4 border-black p-4 tablet:p-6 flex justify-between items-center"
+  class="min-h-[124px] bg-white border-b-4 border-black p-4 tablet:p-6 flex gap-14 justify-between items-center"
 >
   <a
     href="/"
-    title="Back to Home"
+    aria-label="Back to Homepage"
     class="flex gap-x-2 tablet:gap-x-4 items-center"
   >
     <img src="/rummo.png" width="64" height="64" class="rounded-full" />
@@ -20,15 +20,6 @@ import NavigationItems from "./NavigationItems.astro";
   </a>
   <nav class="hidden tablet:block">
     <ul class="flex gap-8 items-center">
-      <!-- {
-        routes.map((item) => (
-          <li>
-            <a class="text-lg" href={item.url} title={`Go to ${item.name}`}>
-              {item.name}
-            </a>
-          </li>
-        ))
-      } -->
       <NavigationItems />
     </ul>
   </nav>

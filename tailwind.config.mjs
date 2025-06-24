@@ -20,7 +20,7 @@ export default {
     dropShadow: shadows,
     screens: {
       xs: "354px",
-      tablet: "712px",
+      tablet: "782px",
       laptop: "1024px",
       desktop: "1280px",
     },

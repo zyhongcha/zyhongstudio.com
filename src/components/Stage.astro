@@ -10,7 +10,10 @@ type Props = {
 if (Astro.props.color === undefined) {
   Astro.props.color = randomizedColor();
 }
-const { color } = Astro.props;
+const age = Math.floor(
+  (new Date().getTime() - new Date("1995-06-16").getTime()) /
+    (1000 * 60 * 60 * 24 * 365.25)
+);
 ---
 
 <div
@@ -23,14 +26,17 @@ const { color } = Astro.props;
       Hello, I'm Zyhong Liu<span class={`text-ocher`}>.</span>
     </h2>
     <p class="prose-lg tablet:prose-xl">
-      Independent Freelance Fullstack Web Developer. I build web apps and drink
-      tea on the side. I am a 29-year old German-Cantonese based in Duesseldorf, Germany 🇩🇪.
+      I'm a Freelance Fullstack Web Developer, who architects award-winning web
+      applications, guided by a firm commitment to performance, accessibility,
+      and SEO. Passionate about delivering highly scalable solutions that
+      provide an <b>outstanding user experience for everyone</b>. I am a {age}-year old
+      German-Cantonese based in Paderborn, Germany 🇩🇪.
     </p>
   </div>
   <div class="tablet:col-span-4 order-first tablet:order-last">
     <img
       class:list={[
-        `border-${color} rounded-full`,
+        `border-oolong rounded-full`,
         "m-auto",
         "w-full h-full max-w-[300px] max-h-[300px] tablet:max-w-full tablet:max-h-full",
         "border-t-[2px] border-r-[10px] border-b-[12px] border-l-[2px]",
@@ -40,7 +46,7 @@ const { color } = Astro.props;
       width="1236"
       height="1236"
       decoding="async"
-      alt="Portrait of me"
+      alt="Portrait of Zyhong Liu"
     />
   </div>
 </div>

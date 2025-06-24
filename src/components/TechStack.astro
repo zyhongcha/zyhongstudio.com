@@ -15,7 +15,10 @@ const { title, stackList } = Astro.props;
 
 <Card classList="tablet:col-span-6 flex flex-col gap-2">
   <h3>{title}</h3>
-  <ul class="p-1 tablet:p-2.5 flex gap-x-2.5 gap-y-4 flex-wrap items-center">
+  <ul
+    class="p-1 tablet:p-2.5 flex gap-x-2.5 gap-y-4 flex-wrap items-center"
+    aria-label={`${title} skills`}
+  >
     {
       stackList.map((item) => (
         <li>
@@ -23,7 +26,7 @@ const { title, stackList } = Astro.props;
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            title={`Go to ${item.name}`}
+            aria-label={`Go to the website of ${item.name}`}
           >
             <Pill>{item.name}</Pill>
           </a>

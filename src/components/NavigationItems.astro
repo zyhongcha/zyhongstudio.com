@@ -1,9 +1,10 @@
 ---
 import linkedin from "/public/linkedin.svg";
 import github from "/public/github.svg";
+import Action from "./Action.astro";
 ---
 
-<ul class="flex gap-8 items-center">
+<ul class="flex flex-wrap gap-8 items-center">
   <!-- {
       routes.map((item) => (
         <li>
@@ -21,7 +22,7 @@ import github from "/public/github.svg";
             href={"https://github.com/zyhongcha"}
             target="_blank"
             rel="noopener noreferrer"
-            title={`See Github Profile`}
+            aria-label={`See Github Profile`}
           >
             <img
               src={github.src}
@@ -35,7 +36,7 @@ import github from "/public/github.svg";
             href={"https://www.linkedin.com/in/zyhong-liu-a58bb2196/"}
             target="_blank"
             rel="noopener noreferrer"
-            title={`See LinkedIn Profile`}
+            aria-label={`See LinkedIn Profile`}
           >
             <img
               src={linkedin.src}
@@ -43,6 +44,18 @@ import github from "/public/github.svg";
               class:list={["w-[38px] h-[38px]"]}
             />
           </a>
+        </li>
+        <li>
+          <Action
+            as="a"
+            tagStyleVariant="button"
+            href={
+              "mailto:hello@zyhongstudio.com?subject=Enquiry&body=Hi Zyhong"
+            }
+            trailingArrow
+          >
+            Contact me
+          </Action>
         </li>
       </>
     )

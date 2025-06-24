@@ -51,5 +51,5 @@ if (Astro.props.tagStyleVariant !== null) {
 
 <Tag {...attr} class:list={[tagStyles, classList, "inline-block"]}>
   <slot />
-  {trailingArrow ? <span>&rarr;</span> : null}
+  {trailingArrow ? <span  class="font-bold"   aria-hidden="true">&rarr;</span> : null}
 </Tag>
