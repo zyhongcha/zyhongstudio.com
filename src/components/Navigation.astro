@@ -13,12 +13,12 @@ import NavigationItems from "./NavigationItems.astro";
     aria-label="Back to Homepage"
     class="flex gap-x-2 tablet:gap-x-4 items-center"
   >
-    <img src="/rummo.png" width="64" height="64" class="rounded-full" />
+    <img src="/rummo.png" width="64" height="64" class="rounded-full" alt="" />
     <h1 class="hidden xs:inline-block font-bold text-[2rem] tablet:text-[3rem]">
       ZyhongStudio
     </h1>
   </a>
-  <nav class="hidden tablet:block">
+  <nav class="hidden tablet:block" aria-label="Navigation items">
     <ul class="flex gap-8 items-center">
       <NavigationItems />
     </ul>
@@ -32,14 +32,20 @@ import NavigationItems from "./NavigationItems.astro";
     actionProps={{
       id: "drawer-btn",
       "aria-label": "Open menu",
+      "aria-controls": "mobile-drawer",
+      "aria-expanded": "false",
+      type: "button",
     }}
   >
-    <img src={drawer.src} width="32" height="32" />
+    <img src={drawer.src} width="32" height="32" alt="" />
   </Action>
 
-  <nav
+  <div
     id="mobile-drawer"
     class="translate-x-full transition-transform ease-in-out duration-300 z-20 fixed w-[248px] top-0 right-0 h-full bg-cream p-4"
+    role="dialog"
+    aria-modal="true"
+    title="Navigation drawer"
   >
     <div class="h-[124px] flex items-center mt-[-1rem] relative">
       <Action
@@ -47,6 +53,8 @@ import NavigationItems from "./NavigationItems.astro";
         classList="relative w-[32px] h-[32px] pl-0 pr-0 pt-0 pb-0 ml-auto "
         actionProps={{
           id: "drawer-close-btn",
+          type: "button",
+          "aria-label": "Close menu",
         }}
       >
         <div class="relative right-[-2px]">
@@ -64,24 +72,49 @@ import NavigationItems from "./NavigationItems.astro";
       </Action>
     </div>
 
-    <div class="flex flex-col text-right items-end">
+    <nav
+      aria-label="Navigation items"
+      class="flex flex-col text-right items-end"
+    >
       <NavigationItems />
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const drawerBtn = document.getElementById("drawer-btn");
+    const drawerBtn = document.getElementById(
+      "drawer-btn"
+    ) as HTMLButtonElement;
     const closeBtn = document.getElementById("drawer-close-btn");
-    const mobileDrawer = document.getElementById("mobile-drawer");
+    const mobileDrawer = document.getElementById(
+      "mobile-drawer"
+    ) as HTMLDivElement;
 
-    drawerBtn?.addEventListener("click", () => {
-      mobileDrawer?.classList.toggle("translate-x-full");
-    });
+    const toggleDrawer = () => {
+      const isOpened = drawerBtn.getAttribute("aria-expanded") === "true";
 
-    closeBtn?.addEventListener("click", () => {
-      mobileDrawer?.classList.toggle("translate-x-full");
+      drawerBtn.setAttribute("aria-expanded", (!isOpened).toString());
+
+      mobileDrawer.classList.toggle("translate-x-full");
+
+      if (!isOpened) {
+        closeBtn?.focus();
+      } else {
+        drawerBtn?.focus();
+      }
+    };
+
+    drawerBtn?.addEventListener("click", toggleDrawer);
+    closeBtn?.addEventListener("click", toggleDrawer);
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "Escape" &&
+        drawerBtn.getAttribute("aria-expanded") === "true"
+      ) {
+        toggleDrawer();
+      }
     });
   });
 </script>
